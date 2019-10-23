@@ -4,8 +4,17 @@
 # In[ ]:
 
 import re
-def magnifying_glass("book"):
-    if book != string:
-        raise TypeError("I don't feel like doing math.")
+def magnifying_glass(book):
+    if type(book) != str:
+        raise TypeError("Not a string!")
+    result = re.findall('[a-zA-Z]*at\\b', book)
+    atwords = []
+    for word in result:
+        if len(word) > 3:
+            atwords.append(word)
+    return atwords
 
-magnifying_glass("A_Modest_Proposal.txt")
+source = open('A_Modest_Proposal.txt')
+proposal = source.read()
+
+print magnifying_glass(proposal)
